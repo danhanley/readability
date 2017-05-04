@@ -1,0 +1,11 @@
+../textstat/textstat.py
+../textstat/__init__.py
+../textstat/easy_words.txt
+../textstat/textstat.pyc
+../textstat/__init__.pyc
+./
+PKG-INFO
+pbr.json
+top_level.txt
+dependency_links.txt
+SOURCES.txt

@@ -1,0 +1,15 @@
+The lambda function uses the comiled python textstat library.
+if you build this on Ubunu and package it you will get a cryptic error message about packages not being suported.
+
+The upshot is you need to build textstat on the apropriate AMI that will host the lambda.
+
+See: http://www.perrygeo.com/running-python-with-compiled-code-on-aws-lambda.html
+
+I'll commit the correct version for running in AWS EU (Ireland). You may need to rebuild if running in other centres.
+
+NB You also need to install setuptools in this directory
+
+cd lambda
+
+pip install textstat -t .
+pip install --upgrade setuptools -t .
