@@ -20,6 +20,7 @@ export class ReadabilityService {
   calculate_readability(ta) {
     var self = this;
     if (ta.value.length < 20)  return;
+    //TODO really should make this non blocking, only call if input has changed, perhaps on a timer instead of by keyup?
     var oReq = new XMLHttpRequest();
     oReq.open("POST", 'https://xspbib9jgb.execute-api.eu-west-1.amazonaws.com/prod/readability',true);
 
