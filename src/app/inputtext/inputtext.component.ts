@@ -1,18 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import {ReadabilityService} from '../readability.service';
+import {ReadabilityComponent} from '../readability/readability.component';
 
 @Component({
   selector: 'app-inputtext',
   templateUrl: './inputtext.component.html',
-  styleUrls: ['./inputtext.component.css']
+  styleUrls: ['./inputtext.component.css'],
+  providers: [ReadabilityComponent]
 })
 export class InputtextComponent implements OnInit {
 
-  ra:ReadabilityService;
+  rc: ReadabilityComponent;
 
-  constructor(attrs: ReadabilityService) {
-    this.ra = attrs;
-  }
+  constructor(rc: ReadabilityComponent) { this.rc = rc}
 
   ngOnInit() {
   }
