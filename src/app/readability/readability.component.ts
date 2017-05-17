@@ -27,20 +27,22 @@ export class ReadabilityComponent  {
     .distinctUntilChanged()   // ignore if next search term is same as previous
     .switchMap(term => this.readabilityService.calculate_readability('{ "text" : "' + term + '" }'));
 
-  score: ReadabilityScore = new ReadabilityScore();
+  private score: ReadabilityScore = new ReadabilityScore();
 
-  scoreSub = this.scoreObs.subscribe(
-    (next) => {
-      this.score = next['body'] as ReadabilityScore;
-      console.log(this.score);
-    },
-    (error) => {
-      console.log("Er")
-  })
+  private scoreSub;
 
 
   constructor(private readabilityService: ReadabilityService) {
-
+    let self = this;
+    this.scoreSub = this.scoreObs.subscribe(
+      (next) => {
+        //this.score = next['body'] as ReadabilityScore;
+        self.score.automated_readability_index = next['body'].automated_readability_index;
+        console.log(this.score.automated_readability_index);
+      },
+      (error) => {
+        console.log("Er")
+      })
   }
 
   // Push a piece of text into the observable stream.
