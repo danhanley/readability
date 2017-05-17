@@ -16,14 +16,30 @@ import 'rxjs/add/operator/switchMap';
   selector: 'app-readability',
   templateUrl: './readability.component.html',
   styleUrls: ['./readability.component.css'],
-  providers: [ReadabilityService]
+  providers: [ReadabilityService, ReadabilityScore]
 })
-export class ReadabilityComponent implements OnInit {
+export class ReadabilityComponent  {
 
-  score: Observable<ReadabilityScore>;
   private textStream = new Subject<string>();
 
-  constructor( private readabilityServce: ReadabilityService) {
+  scoreObs: Observable<ReadabilityScore> = this.textStream
+    .debounceTime(300)        // wait 300ms after each keystroke before considering the term
+    .distinctUntilChanged()   // ignore if next search term is same as previous
+    .switchMap(term => this.readabilityService.calculate_readability('{ "text" : "' + term + '" }'));
+
+  score: ReadabilityScore = new ReadabilityScore();
+
+  scoreSub = this.scoreObs.subscribe(
+    (next) => {
+      this.score = next['body'] as ReadabilityScore;
+      console.log(this.score);
+    },
+    (error) => {
+      console.log("Er")
+  })
+
+
+  constructor(private readabilityService: ReadabilityService) {
 
   }
 
@@ -31,15 +47,9 @@ export class ReadabilityComponent implements OnInit {
   calculate_readability(text: string): void {
     console.log('Adding to stream: ' + text)
     this.textStream.next(text);
-
-  }
-
-  ngOnInit(): void {
-    this.score = this.textStream
-      .debounceTime(300)        // wait 300ms after each keystroke before considering the term
-      .distinctUntilChanged()   // ignore if next search term is same as previous
-      .switchMap(term => this.readabilityServce.calculate_readability(term));
-    this.score.subscribe();
   }
 
 }
+
+
+

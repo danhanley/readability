@@ -8,6 +8,7 @@ import { InputtextComponent } from './inputtext/inputtext.component';
 import { ReadabilityComponent } from './readability/readability.component';
 import { SentimentComponent } from './sentiment/sentiment.component';
 import {ReadabilityService} from './readability.service'
+import {ReadabilityScore} from './readability.score'
 
 @NgModule({
   declarations: [
@@ -22,7 +23,7 @@ import {ReadabilityService} from './readability.service'
     HttpModule,
     JsonpModule
   ],
-  providers: [ReadabilityService],
+  providers: [ReadabilityService, ReadabilityScore],
   bootstrap: [AppComponent]
 })
 export class AppModule {

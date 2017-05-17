@@ -1,10 +1,11 @@
 /**
  * Created by dan on 16/05/17.
  */
-
+import { Injectable } from '@angular/core';
+@Injectable()
 export class ReadabilityScore {
 
-  automated_readability_index  : string;
+  automated_readability_index  : string = 'Uncalculated';
   coleman_liau_index           : string;
   flesch_kincaid_grade_level   : string;
   flesch_kincaid_reading_ease  : string;
