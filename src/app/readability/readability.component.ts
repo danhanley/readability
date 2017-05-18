@@ -16,7 +16,7 @@ import 'rxjs/add/operator/switchMap';
   selector: 'app-readability',
   templateUrl: './readability.component.html',
   styleUrls: ['./readability.component.css'],
-  providers: [ReadabilityService, ReadabilityScore]
+  //providers: [ReadabilityService, ReadabilityScore]
 })
 export class ReadabilityComponent  {
 
@@ -36,9 +36,9 @@ export class ReadabilityComponent  {
     let self = this;
     this.scoreSub = this.scoreObs.subscribe(
       (next) => {
-        //this.score = next['body'] as ReadabilityScore;
-        self.score.automated_readability_index = next['body'].automated_readability_index;
-        console.log(this.score.automated_readability_index);
+        self.score = next;
+        console.log("Server response:");
+        console.log(self.score);
       },
       (error) => {
         console.log("Er")

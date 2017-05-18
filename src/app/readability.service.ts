@@ -16,7 +16,7 @@ export class ReadabilityService {
     let options = new RequestOptions({ headers: headers });
     return this.http
       .post(`https://xspbib9jgb.execute-api.eu-west-1.amazonaws.com/prod/readability`, text, options)
-      .map(r => r.json() as ReadabilityScore)
+      .map(r => r.json()['body'] as ReadabilityScore)
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'))
   }
 }
