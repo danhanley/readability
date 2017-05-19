@@ -4,3 +4,9 @@
   margin: 0;
 }
 
+#readability, #inputtext {
+  float: left;
+  padding: 10px;
+  background-color: #1f76ca;
+}
+

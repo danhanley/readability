@@ -1,5 +1,5 @@
 
-<div align="left">
+<div id="readability">
   <ul name="readability_scores">
     <li>Automated Readability Index <div class="box">{{(scoreObs | async)?.automated_readability_index}}  </div>      </li>
     <li>Coleman Liau Index          <div class="box">{{(scoreObs | async)?.coleman_liau_index}}           </div>      </li>
@@ -14,7 +14,7 @@
 
   </ul>
 </div>
-<div float="right">
-<textarea  #inputtext (keyup)="calculate_readability(inputtext.value)" rows="35" cols="70" placeholder="Type text here...">
+<div id="inputtext">
+<textarea  #inputtext (keyup)="calculate_readability(inputtext.value)" rows="34" cols="70" placeholder="Type text here...">
 </textarea>
 </div>

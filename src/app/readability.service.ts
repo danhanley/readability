@@ -30,10 +30,7 @@ export class ReadabilityService {
             readability.difficult_words                 = responseObject['difficult_words'];
             readability.linsear_write_formula           = responseObject['linsear_write_formula'];
             readability.text_standard                   = responseObject['text_standard'];
-         console.log("From server:");
-        console.log(responseObject);
-        console.log(readability);
-        return readability;
+            return readability;
       })
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'))
   }

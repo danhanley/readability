@@ -13,7 +13,6 @@ import {ReadabilityScore} from './readability.score'
 @NgModule({
   declarations: [
     AppComponent,
-    SentimentComponent,
     ReadabilityComponent
   ],
   imports: [

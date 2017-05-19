@@ -19,19 +19,20 @@ import 'rxjs/add/operator/switchMap';
 })
 export class ReadabilityComponent  {
 
-  private textStream = new Subject<string>();
-
-  scoreObs: Observable<ReadabilityScore> = this.textStream
-    .debounceTime(300)        // wait 300ms after each keystroke before considering the term
-    .distinctUntilChanged()   // ignore if next search term is same as previous
-    .switchMap(term => this.readabilityService.calculate_readability('{ "text" : "' + term + '" }'));
-
   constructor(private readabilityService: ReadabilityService) {  }
+
+  private textStream = new Subject<string>();
 
   // Push a piece of text into the observable stream.
   calculate_readability(text: string): void {
     this.textStream.next(text);
   }
+
+  scoreObs: Observable<ReadabilityScore> = this.textStream
+    .debounceTime(300)        // wait 300ms after each keystroke before considering the term
+    .distinctUntilChanged()   // ignore if next search term is same as previous
+    .switchMap(term => this.readabilityService.calculate_readability('{ "text" : "' + term + '" }')
+  );
 
 }
 
