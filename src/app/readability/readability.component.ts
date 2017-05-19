@@ -16,7 +16,6 @@ import 'rxjs/add/operator/switchMap';
   selector: 'app-readability',
   templateUrl: './readability.component.html',
   styleUrls: ['./readability.component.css'],
-  //providers: [ReadabilityService, ReadabilityScore]
 })
 export class ReadabilityComponent  {
 
@@ -27,27 +26,10 @@ export class ReadabilityComponent  {
     .distinctUntilChanged()   // ignore if next search term is same as previous
     .switchMap(term => this.readabilityService.calculate_readability('{ "text" : "' + term + '" }'));
 
-  private score: ReadabilityScore = new ReadabilityScore();
-
-  private scoreSub;
-
-
-  constructor(private readabilityService: ReadabilityService) {
-    let self = this;
-    this.scoreSub = this.scoreObs.subscribe(
-      (next) => {
-        self.score = next;
-        console.log("Server response:");
-        console.log(self.score);
-      },
-      (error) => {
-        console.log("Er")
-      })
-  }
+  constructor(private readabilityService: ReadabilityService) {  }
 
   // Push a piece of text into the observable stream.
   calculate_readability(text: string): void {
-    console.log('Adding to stream: ' + text)
     this.textStream.next(text);
   }
 

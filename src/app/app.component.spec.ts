@@ -12,7 +12,6 @@ describe('AppComponent', () => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent,
-        InputtextComponent,
         ReadabilityComponent,
         SentimentComponent
       ],

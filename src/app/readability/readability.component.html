@@ -1,18 +1,20 @@
-<ul name="readability_scores">
- <li>Automated Readability Index <div class="box">{{(this.scoreObs | async)?.automated_readability_index}}  </div>      </li>
-  <li>Automated Readability Index <div class="box">{{score.automated_readability_index}}  </div>      </li>
-  <li>Automated Readability Index <div class="box">{{this.scoreObs.next()}}  </div>      </li>
-  <li>Automated Readability Index <div class="box">{{(score | async)?.automated_readability_index}}  </div>      </li>
 
-  <li>Automated Readability Index <div class="box">{{this.score.automated_readability_index}}  </div>      </li>
- <!-- <li>Coleman Liau Index          <div class="box">{{score.coleman_liau_index}}           </div>      </li>
-  <li>Flesch Kincaid Grade Level  <div class="box">{{score.flesch_kincaid_grade_level}}   </div>      </li>
-  <li>Flesch Kincaid Reading Ease <div class="box">{{score.flesch_kincaid_reading_ease}}  </div>      </li>
-  <li>Gunning Fog Score           <div class="box">{{score.gunning_fog_score}}            </div>      </li>
-  <li>SMOG Index                  <div class="box">{{score.smog_index}}                   </div>      </li>
-  <li>Dale Chall Readability Score<div class="box">{{score.dale_chall_readability_score}} </div>      </li>
-  <li>Difficult Words             <div class="box">{{score.difficult_words}}              </div>      </li>
-  <li>Linsear Write Formula       <div class="box">{{score.linsear_write_formula}}        </div>      </li>
-  <li>Text Standard               <div class="box">{{score.text_standard}}                </div>      </li>
-  -->
-</ul>
+<div align="left">
+  <ul name="readability_scores">
+    <li>Automated Readability Index <div class="box">{{(scoreObs | async)?.automated_readability_index}}  </div>      </li>
+    <li>Coleman Liau Index          <div class="box">{{(scoreObs | async)?.coleman_liau_index}}           </div>      </li>
+    <li>Flesch Kincaid Grade Level  <div class="box">{{(scoreObs | async)?.flesch_kincaid_grade_level}}   </div>      </li>
+    <li>Flesch Kincaid Reading Ease <div class="box">{{(scoreObs | async)?.flesch_kincaid_reading_ease}}  </div>      </li>
+    <li>Gunning Fog Score           <div class="box">{{(scoreObs | async)?.gunning_fog_score}}            </div>      </li>
+    <li>SMOG Index                  <div class="box">{{(scoreObs | async)?.smog_index}}                   </div>      </li>
+    <li>Dale Chall Readability Score<div class="box">{{(scoreObs | async)?.dale_chall_readability_score}} </div>      </li>
+    <li>Difficult Words             <div class="box">{{(scoreObs | async)?.difficult_words}}              </div>      </li>
+    <li>Linsear Write Formula       <div class="box">{{(scoreObs | async)?.linsear_write_formula}}        </div>      </li>
+    <li>Text Standard               <div class="box">{{(scoreObs | async)?.text_standard}}                </div>      </li>
+
+  </ul>
+</div>
+<div float="right">
+<textarea  #inputtext (keyup)="calculate_readability(inputtext.value)" rows="35" cols="70" placeholder="Type text here...">
+</textarea>
+</div>
